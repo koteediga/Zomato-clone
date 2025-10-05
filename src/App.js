@@ -1,23 +1,38 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { LoginComponent } from './components/LoginComponent/LoginComponent';
+import { Home } from './components/HomeComponent/Home';
+import { ProtectedRoute } from './components/ProtectedComponent/ProtectedRoute';
+import { Routes, Route } from 'react-router-dom';
+import Cart from './components/Cart/Cart';
+import PageNotFound from './components/NotFound/NotFound';
+import RestaurantDetail from './components/RestaurantDetail/RestaurantDetail';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/login" element={<LoginComponent />} />
+        <Route 
+          path="/" 
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path="/cart" 
+          element={
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/restaurants/:restaurantId" element={<ProtectedRoute><RestaurantDetail /></ProtectedRoute>} />
+        {/* Fallback route for undefined URLs */}
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
     </div>
   );
 }
