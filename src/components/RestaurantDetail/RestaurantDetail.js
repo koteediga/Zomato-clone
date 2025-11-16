@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import Cookies from "js-cookie";
 import "./RestaurantDetail.css";
 import { useCart } from "../../context/CartContext";
-import Header from "../Header/Header";
+ import Header from "../Header/Header";
+import { Footer } from "../Footer/Footer";
 
 const jwtToken = Cookies.get("jwt_token");
 const requestOptions = {
@@ -99,6 +100,9 @@ const RestaurantDetail = () => {
           );
         })}
       </div>
+    </div>
+    <div>
+      <Footer />
     </div>
     </div>
   );

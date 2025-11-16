@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import "./RestaurantDetails.css";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import {Footer} from "../Footer/Footer"
+// import Header from "../Header/Header";
 
 const sortByOptions = [
   { id: 'Lowest', label: 'Sort by Lowest' },
@@ -79,6 +81,11 @@ export const RestaurantDetails = () => {
   };
 
   return (
+    <div>
+      {/* <div>
+            <Header />
+          </div> */}
+    
     <div className="home-container">
       <h2>Popular Restaurants</h2>
       <p>Select Your favourite restaurant special dish and make your day happy...</p>
@@ -171,6 +178,10 @@ export const RestaurantDetails = () => {
           &gt;
         </button>
       </div>
+      <div>
+            <Footer />
+          </div>
+    </div>
     </div>
   );
 };
