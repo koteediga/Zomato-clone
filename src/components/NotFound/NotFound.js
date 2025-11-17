@@ -1,9 +1,10 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 import './NotFound.css'
 
+
 const NotFound = () => {
-  const navigate = useNavigate()
+  const history = useHistory()
   return (
     <div className="page-not-found">
       <img
@@ -16,7 +17,7 @@ const NotFound = () => {
         We are sorry, the page you requested could not be found.<br/>
         Please go back to the homepage
       </p>
-      <button className="home-page-btn" onClick={() => navigate('/')}>
+      <button className="home-page-btn" onClick={() => history.push('/')}>
         Home Page
       </button>
     </div>

@@ -3,12 +3,12 @@ import { useCart } from '../../context/CartContext';
 import './Cart.css';
 import Header from '../Header/Header';
 import { Footer } from '../Footer/Footer';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const Cart = () => {
   const { cart, incrementQuantity, decrementQuantity, clearCart } = useCart();
   const [isActive, setActive] = useState(false);
-  const navigate = useNavigate();
+  const history = useHistory();
 
   const totalPrice = cart.reduce((acc, item) => acc + item.cost * item.quantity, 0);
 
@@ -17,8 +17,15 @@ const Cart = () => {
       <div className="cart-empty-page">
         <Header />
         <div className="empty-cart-content">
-          <img src="/empty-cart.png" alt="empty cart" className="empty-cart-img" />
-          <p>Your cart is empty!</p>
+          <img src="https://res.cloudinary.com/dh8jgl2ue/image/upload/v1763362382/cooking_1_etitk7.png" alt="empty cart" className="empty-cart-img" />
+          <h1>No Orders Yet!</h1>
+          <p>Your cart is empty.Add Something form menu</p>
+          <button
+              onClick={() => history.push("/")}
+              style={{ margin: "24px auto", padding: "10px 20px", borderRadius: "6px", background: "#ff8200", color: "#fff", border: "none" }}
+            >
+              Order Now
+            </button>
         </div>
         <Footer />
       </div>
@@ -36,11 +43,12 @@ const Cart = () => {
       <div className="cart-body-content">
         {isActive ? (
           <div style={{ textAlign: "center", marginTop: "50px" }}>
+            <img src="https://res.cloudinary.com/dh8jgl2ue/image/upload/v1763362335/check-circle.1_1_sbkmeo.png" alt="paymeny-icon" className="Payment-done"/>
             <h1>Payment Successful!</h1>
             <p>Thank you for ordering</p>
             <p>Your payment is successfully completed</p>
             <button
-              onClick={() => navigate("/")}
+              onClick={() => history.push("/")}
               style={{ margin: "24px auto", padding: "10px 20px", borderRadius: "6px", background: "#ff8200", color: "#fff", border: "none" }}
             >
               Go To Home Page

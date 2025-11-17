@@ -1,14 +1,14 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 import "./Header.css";
 
 export const Header = () => {
-  const navigate = useNavigate();
+  const history = useHistory();
 
   const onClickLogout = () => {
     Cookies.remove("jwt_token");
-    navigate("/login");
+    history.push("/login");
   };
 
   return (
